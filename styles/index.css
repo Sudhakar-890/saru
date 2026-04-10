@@ -1,0 +1,310 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: "Great Vibes", cursive;
+    font-weight: 500;
+    font-style: normal;
+    font-size:36px;
+}
+
+body{
+    color:beige;
+    width:100vw;
+    min-height: 100vh;
+    height: 100vh;
+    overflow:hidden;
+}
+
+.indexBackground{
+    background:url('../assets/background-midnightblue.jpg');
+    backdrop-filter:grayScale(50%);
+    background-position: left;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position:absolute;
+    z-index: -10;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+}
+
+.overlay{
+    background-color: hsla(258, 49%, 23%, 0.507);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:100;
+    pointer-events: none;
+    opacity: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    transition:all 1s;
+}
+
+/* contents */
+
+main{
+    height:100%;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    overflow:scroll;
+}
+
+.displayBox{
+    width:max-content;
+    min-width:100vw;
+    height:700px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.login{
+    background-color: rgba(10, 12, 136, 0.418);
+    width:330px;
+    margin:100px auto 0;
+    padding:50px 10px;
+    height:500px;
+    backdrop-filter: blur(15px);
+    border-radius:30px;
+    border:5px rgba(255, 253, 253, 0.719) solid;
+    transition: all 3s;
+    display:none;
+    opacity: 0;
+}
+
+.login p:nth-child(2){
+    font-size:0.8rem;
+    color:orangered
+}
+
+.login img{
+    width:80%;
+    margin-top:30px;
+    height:130px;
+    object-fit:contain;
+    transition:1s;
+    filter:drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.438))
+}
+
+.login h1{
+    font-size:0.65rem;
+    margin-top:30px;
+}
+
+.login input{
+    border-radius: 15px;
+    font-size:0.5rem;
+    padding:5px 20px;
+    width:80%;
+    margin-top:10px;
+    border:none;
+}
+
+.answer::placeholder{
+    font-size:0.3rem;
+}
+
+@keyframes glow{
+    from {
+        text-shadow: 0px 0px 5px rgba(255, 255, 0, 0.726);
+    }
+    to{
+        text-shadow: 0px 0px 20px rgba(255, 255, 0, 0.63);
+    }
+}
+
+.login p{
+    animation: glow 0.8s infinite ease-in alternate;
+}
+
+/* when we wrong pass , cry scale */
+
+.cryScale{
+    transform: scale(1.4);
+}
+
+.wrongPass{
+    border:2px red solid !important;
+}
+
+/* after login */
+
+@keyframes translate{
+    to{
+        transform: translate(-100%,-25%);
+    }
+}
+
+.walking{
+    opacity:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:90%;
+    display:none;
+    margin:20% auto;
+}
+
+.show{
+    opacity:1 !important;
+}
+
+.walking img{
+    width:80%;
+    height:250px;
+    object-fit: contain;
+    background-color:white;
+    border-radius:50%;
+    padding:40px;
+    margin: auto;
+    margin-top:20px;
+}
+
+.overlay h1{
+    text-align: center;
+    font-size:1.8rem;
+    line-height: 0.8;
+    opacity:0;
+    transition: all 1s;
+    color:beige;
+    z-index:100;
+}
+
+.walking p{
+    font-size:2.8rem;
+    text-align:center;
+    animation: glow 1s infinite ease-in alternate;
+}
+
+.showOverlay{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.showh1{
+    opacity: 1 !important;
+}
+
+/*birthday wish overlay*/
+
+.wishOverlay{
+    background-color:rgba(0,0,0,0.6);
+}
+
+/* canvas */
+
+canvas{
+    z-index:90;
+    position:absolute;
+}
+
+/* photo gallery */
+ 
+ #overlaySection{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
+  gap:20px;
+  justify-content: space-between;
+  align-items: center;
+  overflow:scroll;
+ }
+ 
+ #overlaySection>div:nth-child(odd){
+  width:100vw;
+  height:30%;
+  overflow: hidden;
+ }
+ 
+ .topSlide,.bottomSlide{
+  width:max-content ;
+  height:100%;
+  display:flex;
+  gap:10px;
+  justify-content: flex-start;
+  align-items: center;
+ }
+ 
+.topSlide div, .bottomSlide div{
+   width:100px;
+   height:95%;
+   border-radius: 20px;
+   overflow:hidden;
+  }
+ 
+ .topSlide div img, .bottomSlide div img{
+   object-fit: cover;
+   width:100%;
+   height:100%;
+   filter:grayscale(50%);
+ }
+ 
+ #overlaySection .middle{
+  width:100vw;
+  height:40%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ #overlaySection .middle .mainImg{
+  width:70%;
+  height:90%;
+  border-radius: 30px;
+  background-color:rgba(178, 194, 119, 1);
+  overflow: hidden;
+  animation:imgGlow 2s infinite ease-in-out alternate;
+ }
+ 
+ #overlaySection .middle .mainImg img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: top;
+ }
+ 
+ @keyframes scroll{
+  0%{
+   transform:translateX(0);
+  }
+  100%{
+   transform:translateX(-50%);
+  }
+ }
+ 
+ .topSlide{
+  animation:scroll 8s linear infinite;
+ }
+ 
+ .bottomSlide{
+  animation:scroll 8s linear infinite reverse;
+ }
+ 
+ /* glow main img */
+ @keyframes imgGlow{
+     0%{
+         box-shadow: 0px 0px 10px rgba(208, 255, 0, 0.945);
+     }
+     100%{
+         box-shadow:0px 0px 30px rgba(208, 255, 0, 0.945);
+     }
+ }
+ 
+ /*audio*/
+ audio{
+     visibility: hidden;
+     pointer-events:none;
+     display:absolute;
+ }
+ 
